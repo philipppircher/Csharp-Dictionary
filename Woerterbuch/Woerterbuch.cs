@@ -25,14 +25,14 @@ namespace Woerterbuch
             InitializeComponent();
 
             AddAllDictionariesToList();
-            SetSelectedDictionary();
-            SetLabelToDictionaryName(0);
+            SetSelectedDictionaryByStart();
 
             SetFilePaths();
-            SetSelectedDictionary();
+            SetSelectedDictionaryByStart();
             ReadAllExternalFiles();
 
             UpdateTranslations();
+            SetLabelToDictionaryName(0);
         }   
 
         private void SetFilePaths()
@@ -48,8 +48,8 @@ namespace Woerterbuch
             listOfDictionaries.Add(germanToFrenchDict);
             listOfDictionaries.Add(englishToFrenchDict);
         }
-
-        private void SetSelectedDictionary()
+        
+        private void SetSelectedDictionaryByStart()
         {
             selectedDictionary = germanToEnglishDict;
         }

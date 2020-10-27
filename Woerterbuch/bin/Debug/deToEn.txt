@@ -1,4 +1,6 @@
-Tag;marque
-Essen;manger
-Spielen;jouer
-Guten Tag;bojure
+Tag;day
+Essen;to eat
+Spielen;to play
+Guten Tag;good afternoon
+Freund;friend
+Lehrling;apprentice

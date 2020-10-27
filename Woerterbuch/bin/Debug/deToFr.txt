@@ -1,4 +1,5 @@
 Tag;marque
 Essen;manger
-Spielen;jouer
-Guten Tag;Bojur
+Spielen;jour
+freund;le copain
+haus;le maison
