@@ -1,0 +1,4 @@
+Tag;marque
+Essen;manger
+Spielen;jouer
+Guten Tag;Bojur
