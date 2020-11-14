@@ -4,3 +4,8 @@ Spielen;to play
 Guten Tag;good afternoon
 Freund;friend
 Lehrling;apprentice
+Willkommen;welcome
+Hallo;hello
+Fakt;fact
+Zelt;tent
+zählen;to count

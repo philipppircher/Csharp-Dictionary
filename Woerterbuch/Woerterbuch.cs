@@ -79,7 +79,41 @@ namespace Woerterbuch
 
         private void UpdateTranslations()
         {
-            lBoxFromWords.DataSource = selectedDictionary.Keys.ToList();
+            lBoxFromWords.DataSource = selectedDictionary
+                .OrderByDescending(myWord => myWord.Key)
+                .Select(x => $"{x.Key} // {x.Value}") 
+                .ToList();
+
+            //var anyLl = selectedDictionary.Any(x => x.Key.Contains("ll"));
+            //var anyLl = selectedDictionary.FirstOrDefault(x => x.Key.Contains("ll"));
+            //var anyLl = selectedDictionary.First(x => x.Key.Contains("xxx"));
+
+            /* Test Code --
+             * 
+            var numberList = new List<int>();
+            numberList.Add(1);
+            numberList.Add(2);
+            numberList.Add(3);
+            numberList.Add(4);
+            numberList.Add(5);
+            numberList.Add(50);
+
+            int val = numberList.Max();
+            int val2 = numberList.Min();
+            double val3 = numberList.Average();
+            int sum = numberList.Sum();
+            int val4 = numberList.Skip(3).Sum();
+
+            var numberList2 = new List<int>();
+            numberList2.Add(1000);
+            List<int> anyL = numberList2.Union(numberList).ToList();
+
+            var myNewList = from number in numberList
+                            where number % 2 == 0 && number > 2
+                            select number;
+
+            var myNewList2 = myNewList.ToList();
+            */
         }
 
         private void WriteTxtFile(string path, Dictionary<string, string> dict)
@@ -109,6 +143,45 @@ namespace Woerterbuch
                 string[] temp = lines[i].Split(';');
                 dict.Add(temp[0], temp[1]);
             }
+        }
+
+        private void tbSearchInputInDict_TextChanged(object sender, EventArgs e)
+        {
+            var list = selectedDictionary
+                .Where(x => x.Key.Contains(tbSearchInputInDict.Text) )
+                .Select(x => x.Key).ToList();
+            lBoxFromWords.DataSource = list;
+        }
+
+        private void lvLettersSelection_ItemActivate(object sender, EventArgs e)
+        {
+            string selectedLetter = lvLettersSelection.SelectedItems[0].Text;
+
+            var listUpperCaseLetter = GetListFromSelectedLetter(selectedLetter.ToUpper());
+            var listLowerCaseLetter = GetListFromSelectedLetter(selectedLetter.ToLower());
+            var listUnion = UnionLists(listUpperCaseLetter, listLowerCaseLetter);
+
+            lBoxFromWords.DataSource = listUnion;
+        }
+
+        private List<string> UnionLists(List<string> upperCase, List<string> lowerCase)
+        {
+            var listUpperAndLowerCase = upperCase.Union(lowerCase).ToList();
+
+            if (listUpperAndLowerCase.Count == 0)
+            {
+                listUpperAndLowerCase.Add("Keine Wörter für diesen Buchstaben vorhanden.");
+            }
+
+            return listUpperAndLowerCase;
+        }
+
+        private List<string> GetListFromSelectedLetter(string letter)
+        {
+            var list = selectedDictionary
+               .Where(x => x.Key.StartsWith(letter))
+               .Select(x => x.Key).ToList();
+            return list;
         }
 
         private void btn_ExportToCsv_Click(object sender, EventArgs e)
