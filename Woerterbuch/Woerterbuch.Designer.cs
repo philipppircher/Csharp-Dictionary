@@ -18,6 +18,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+
         }
 
         #region Vom Windows Form-Designer generierter Code
@@ -64,6 +65,9 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tbSearchInputInDict = new System.Windows.Forms.TextBox();
             this.lvLettersSelection = new System.Windows.Forms.ListView();
+            this.lbMatchingLetters = new System.Windows.Forms.Label();
+            this.lbFromDescription = new System.Windows.Forms.Label();
+            this.lbToDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +118,7 @@
             // 
             this.tbTranslation.Location = new System.Drawing.Point(395, 150);
             this.tbTranslation.Name = "tbTranslation";
+            this.tbTranslation.ReadOnly = true;
             this.tbTranslation.Size = new System.Drawing.Size(130, 22);
             this.tbTranslation.TabIndex = 4;
             // 
@@ -187,11 +192,39 @@
             this.lvLettersSelection.View = System.Windows.Forms.View.List;
             this.lvLettersSelection.ItemActivate += new System.EventHandler(this.lvLettersSelection_ItemActivate);
             // 
+            // lbMatchingLetters
+            // 
+            this.lbMatchingLetters.AutoSize = true;
+            this.lbMatchingLetters.Location = new System.Drawing.Point(63, 98);
+            this.lbMatchingLetters.Name = "lbMatchingLetters";
+            this.lbMatchingLetters.Size = new System.Drawing.Size(110, 17);
+            this.lbMatchingLetters.TabIndex = 10;
+            this.lbMatchingLetters.Text = "In word included";
+            // 
+            // lbFromDescription
+            // 
+            this.lbFromDescription.AutoSize = true;
+            this.lbFromDescription.Location = new System.Drawing.Point(63, 30);
+            this.lbFromDescription.Name = "lbFromDescription";
+            this.lbFromDescription.Size = new System.Drawing.Size(0, 17);
+            this.lbFromDescription.TabIndex = 11;
+            // 
+            // lbToDescription
+            // 
+            this.lbToDescription.AutoSize = true;
+            this.lbToDescription.Location = new System.Drawing.Point(355, 30);
+            this.lbToDescription.Name = "lbToDescription";
+            this.lbToDescription.Size = new System.Drawing.Size(0, 17);
+            this.lbToDescription.TabIndex = 12;
+            // 
             // Woerterbuch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 278);
+            this.Controls.Add(this.lbToDescription);
+            this.Controls.Add(this.lbFromDescription);
+            this.Controls.Add(this.lbMatchingLetters);
             this.Controls.Add(this.lvLettersSelection);
             this.Controls.Add(this.tbSearchInputInDict);
             this.Controls.Add(this.numericUpDown1);
@@ -204,6 +237,7 @@
             this.Controls.Add(this.btnAdd);
             this.Name = "Woerterbuch";
             this.Text = "Woerterbuch";
+            this.Load += new System.EventHandler(this.Woerterbuch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,6 +256,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.TextBox tbSearchInputInDict;
         private System.Windows.Forms.ListView lvLettersSelection;
+        private System.Windows.Forms.Label lbMatchingLetters;
+        private System.Windows.Forms.Label lbFromDescription;
+        private System.Windows.Forms.Label lbToDescription;
     }
 }
 

@@ -1,0 +1,7 @@
+day;marq
+to eat;mangare
+to play;jour
+cow;vache
+good;bon
+friend;le copain
+attribute;qualité

@@ -8,3 +8,6 @@ C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\obj\Debug\Woerterbuch.cs
 C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\obj\Debug\Woerterbuch.exe
 C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\obj\Debug\Woerterbuch.pdb
 C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\obj\Debug\Woerterbuch.Woerterbuch.resources
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\bin\Debug\WoerterbuchLogic.dll
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\bin\Debug\WoerterbuchLogic.pdb
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\Woerterbuch\obj\Debug\Woerterbuch.csproj.CopyComplete

@@ -1,5 +1,0 @@
-Day;marque
-to eat;manger
-to play;jouer
-Good bye;arevoir
-house;le maison

@@ -3,3 +3,4 @@ Essen;manger
 Spielen;jour
 freund;le copain
 haus;le maison
+Eigenschaft;qualité

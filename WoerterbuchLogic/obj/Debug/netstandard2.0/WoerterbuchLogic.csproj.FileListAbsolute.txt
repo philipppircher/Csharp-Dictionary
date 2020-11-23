@@ -1,0 +1,9 @@
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0\WoerterbuchLogic.deps.json
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0\WoerterbuchLogic.dll
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0\WoerterbuchLogic.pdb
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.csprojAssemblyReference.cache
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.AssemblyInfoInputs.cache
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.AssemblyInfo.cs
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.csproj.CoreCompileInputs.cache
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.dll
+C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\obj\Debug\netstandard2.0\WoerterbuchLogic.pdb

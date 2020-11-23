@@ -9,3 +9,6 @@ Hallo;hello
 Fakt;fact
 Zelt;tent
 zählen;to count
+Ziel;target
+Eigenschaft;attribute
+Friede;peace
