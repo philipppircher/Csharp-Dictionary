@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WoerterbuchLogic;
@@ -39,6 +41,10 @@ namespace Woerterbuch
                 MessageBox.Show("Ein neues Wort wurde dem Wörterbuch hinzugefügt");
                 SetFromTextboxAndToTextboxEmptyString();
                 UpdateTranslations();
+            } 
+            else
+            {
+                MessageBox.Show("FromWord und ToWord textboxen Wörter befüllen");
             }
         }
 
@@ -52,14 +58,24 @@ namespace Woerterbuch
 
         private void lvLettersSelection_ItemActivate(object sender, EventArgs e)
         {
-            string selectedLetter = lvLettersSelection.SelectedItems[0].Text;
+            PrintWordsBySelectedLetter();
+        }
 
-            var listUpperCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToUpper());
-            var listLowerCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToLower());
-            var listUnion = controller.UnionLists(listUpperCaseLetter, listLowerCaseLetter);
+        private void PrintWordsBySelectedLetter()
+        {
+            string selectedLetter = lvLettersSelection.SelectedItems[0].Text;
+            List<string> listUnion = UnionList(selectedLetter);
 
             lBoxFromWords.DataSource = listUnion;
             tbTranslation.Text = "";
+        }
+
+        private List<string> UnionList(string selectedLetter)
+        {
+            var listUpperCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToUpper());
+            var listLowerCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToLower());
+            var listUnion = controller.UnionLists(listUpperCaseLetter, listLowerCaseLetter);
+            return listUnion;
         }
 
         private void Woerterbuch_Load(object sender, EventArgs e)
@@ -77,8 +93,15 @@ namespace Woerterbuch
 
         private void btn_ExportToCsv_Click(object sender, EventArgs e)
         {
-            controller.WriteTxtFile();
-            MessageBox.Show("Wörterbuch wurde als CSV exportiert");
+            try
+            {
+                controller.WriteTxtFile();
+                MessageBox.Show("Wörterbuch als CSV exportiert\n\n" + controller.SelectedFilePath);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Wöterbuch als CSV exportieren fehlgeschlagen\n\n" + ex.Message);
+            }
         }
 
         private void SetFromTextboxAndToTextboxEmptyString()
@@ -101,6 +124,7 @@ namespace Woerterbuch
             SetFromTextboxAndToTextboxEmptyString();
             SetLabelToDictionaryName(currentSelectedValue);
             UpdateTranslations();
+            tbTranslation.Text = "";
         }
     }
 }

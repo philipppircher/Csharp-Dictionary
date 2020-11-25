@@ -1,14 +1,3 @@
-Tag;day
-Essen;to eat
 Spielen;to play
-Guten Tag;good afternoon
-Freund;friend
-Lehrling;apprentice
-Willkommen;welcome
-Hallo;hello
-Fakt;fact
-Zelt;tent
-zählen;to count
-Ziel;target
-Eigenschaft;attribute
-Friede;peace
+Freude; happiness
+Zug;tain

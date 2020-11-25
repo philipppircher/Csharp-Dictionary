@@ -13,17 +13,17 @@ namespace WoerterbuchLogic
         public Dictionary<string, string> selectedDictionary = null;
         public List<Dictionary<string, string>> listOfDictionaries = new List<Dictionary<string, string>>();
         public string filePathDeToEn, filePathDeToFr, filePathEnToFr;
-        private string orignPath, filePath;
+        private string originPath, filePath;
 
-        public string SelectedFile 
-        { 
-            get 
-            { return filePath; } 
-            set 
+        public string SelectedFilePath
+        {
+            get
+            { return filePath; }
+            set
             {
-                filePath = orignPath;
-                filePath += value; 
-            } 
+                filePath = originPath;
+                filePath += value;
+            }
         }
 
         public WoerterbuchController()
@@ -36,8 +36,8 @@ namespace WoerterbuchLogic
 
         private void SetFilePaths()
         {
-            orignPath = @"C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0";
-            filePath = orignPath;
+            originPath = @"C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0";
+            filePath = originPath;
 
             filePathDeToEn = @"\deToEn.txt";
             filePathDeToFr = @"\deToFr.txt";
@@ -61,21 +61,21 @@ namespace WoerterbuchLogic
         {
             switch (currentIndex)
             {
-                case 0: 
-                    SelectedFile = filePathDeToEn;
+                case 0:
+                    SelectedFilePath = filePathDeToEn;
                     break;
                 case 1:
-                    SelectedFile = filePathDeToFr;
+                    SelectedFilePath = filePathDeToFr;
                     break;
                 case 2:
-                    SelectedFile = filePathEnToFr;
+                    SelectedFilePath = filePathEnToFr;
                     break;
             }
         }
 
         public void WriteTxtFile()
         {
-            using (StreamWriter writer = new StreamWriter(SelectedFile))
+            using (StreamWriter writer = new StreamWriter(SelectedFilePath))
             {
                 foreach (var element in selectedDictionary)
                 {
@@ -83,6 +83,7 @@ namespace WoerterbuchLogic
                 }
             }
         }
+
 
         private void ReadAllExternalFiles()
         {
@@ -93,7 +94,7 @@ namespace WoerterbuchLogic
 
         private void ReadExternalFile(string fileName, Dictionary<string, string> dict)
         {
-            string[] lines = System.IO.File.ReadLines(orignPath + fileName).ToArray();
+            string[] lines = System.IO.File.ReadLines(originPath + fileName).ToArray();
 
             for (int i = 0; i < lines.Length; i++)
             {
