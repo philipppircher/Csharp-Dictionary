@@ -35,16 +35,16 @@ namespace Woerterbuch
             var fromWord = tbFromWord.Text;
             var toWord = tbToWord.Text;
 
-            if (!string.IsNullOrEmpty(fromWord) && !string.IsNullOrEmpty(toWord))
+            try
             {
-                controller.selectedDictionary.Add(fromWord, toWord);
+                controller.AddEntryToDictionary(fromWord, toWord);
                 MessageBox.Show("Ein neues Wort wurde dem Wörterbuch hinzugefügt");
                 SetFromTextboxAndToTextboxEmptyString();
                 UpdateTranslations();
-            } 
-            else
+            }
+            catch (ExceptionEmptyWords ex)
             {
-                MessageBox.Show("FromWord und ToWord textboxen Wörter befüllen");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -58,19 +58,19 @@ namespace Woerterbuch
 
         private void lvLettersSelection_ItemActivate(object sender, EventArgs e)
         {
-            PrintWordsBySelectedLetter();
+            PrintEntriesBySelectedLetter();
         }
 
-        private void PrintWordsBySelectedLetter()
+        private void PrintEntriesBySelectedLetter()
         {
             string selectedLetter = lvLettersSelection.SelectedItems[0].Text;
-            List<string> listUnion = UnionList(selectedLetter);
+            List<string> listUnion = GetUpperLowerCaseList(selectedLetter);
 
             lBoxFromWords.DataSource = listUnion;
             tbTranslation.Text = "";
         }
 
-        private List<string> UnionList(string selectedLetter)
+        private List<string> GetUpperLowerCaseList(string selectedLetter)
         {
             var listUpperCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToUpper());
             var listLowerCaseLetter = controller.GetListFromSelectedLetter(selectedLetter.ToLower());
@@ -100,7 +100,7 @@ namespace Woerterbuch
             }
             catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show("Wöterbuch als CSV exportieren fehlgeschlagen\n\n" + ex.Message);
+                MessageBox.Show("Wörterbuch als CSV exportieren fehlgeschlagen\n\n" + ex.Message);
             }
         }
 

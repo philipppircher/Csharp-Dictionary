@@ -1,7 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 
 namespace WoerterbuchLogic
 {
@@ -34,6 +34,26 @@ namespace WoerterbuchLogic
             ReadAllExternalFiles();
         }
 
+        /// <summary>
+        /// Adds a new entry to selected dictionary
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public void AddEntryToDictionary(string key, string value)
+        {
+            if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
+            {
+                selectedDictionary.Add(key, value);
+            }
+            else
+            {
+                throw new ExceptionEmptyWords();
+            }
+        }
+
+        /// <summary>
+        /// Set paths of all dictionaries as string
+        /// </summary>
         private void SetFilePaths()
         {
             originPath = @"C:\Users\DCV\Desktop\Code\05 C#\Woerterbuch\WoerterbuchLogic\bin\Debug\netstandard2.0";
@@ -44,6 +64,9 @@ namespace WoerterbuchLogic
             filePathEnToFr = @"\enToFr.txt";
         }
 
+        /// <summary>
+        /// Add all dictionaries in one list of dictionaries
+        /// </summary>
         private void AddAllDictionariesToList()
         {
             listOfDictionaries.Add(germanToEnglishDict);
@@ -51,12 +74,20 @@ namespace WoerterbuchLogic
             listOfDictionaries.Add(englishToFrenchDict);
         }
 
+        /// <summary>
+        /// Set dictionary by int value
+        /// </summary>
+        /// <param name="currentIndex"></param>
         public void SetSelectedDictionary(int currentIndex)
         {
             selectedDictionary = listOfDictionaries[currentIndex];
             SetSelectedFilePath(currentIndex);
         }
 
+        /// <summary>
+        /// Set selectedfile path by int value
+        /// </summary>
+        /// <param name="currentIndex"></param>
         private void SetSelectedFilePath(int currentIndex)
         {
             switch (currentIndex)
@@ -73,6 +104,9 @@ namespace WoerterbuchLogic
             }
         }
 
+        /// <summary>
+        /// Write all entries of selectedDictionary to SelectedFilePath
+        /// </summary>
         public void WriteTxtFile()
         {
             using (StreamWriter writer = new StreamWriter(SelectedFilePath))
@@ -84,7 +118,9 @@ namespace WoerterbuchLogic
             }
         }
 
-
+        /// <summary>
+        /// Reads every file of path and
+        /// </summary>
         private void ReadAllExternalFiles()
         {
             ReadExternalFile(filePathDeToEn, germanToEnglishDict);
@@ -92,6 +128,11 @@ namespace WoerterbuchLogic
             ReadExternalFile(filePathEnToFr, englishToFrenchDict);
         }
 
+        /// <summary>
+        /// Read a single external file from associated path and add entries to dictionary
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="dict"></param>
         private void ReadExternalFile(string fileName, Dictionary<string, string> dict)
         {
             string[] lines = System.IO.File.ReadLines(originPath + fileName).ToArray();
@@ -103,6 +144,12 @@ namespace WoerterbuchLogic
             }
         }
 
+        /// <summary>
+        /// Merge 2 lists together and returns them as one list
+        /// </summary>
+        /// <param name="upperCase"></param>
+        /// <param name="lowerCase"></param>
+        /// <returns></returns>
         public List<string> UnionLists(List<string> upperCase, List<string> lowerCase)
         {
             var listUpperAndLowerCase = upperCase.Union(lowerCase).ToList();
@@ -115,6 +162,11 @@ namespace WoerterbuchLogic
             return listUpperAndLowerCase;
         }
 
+        /// <summary>
+        /// Returns a list from selected Letter
+        /// </summary>
+        /// <param name="letter"></param>
+        /// <returns></returns>
         public List<string> GetListFromSelectedLetter(string letter)
         {
             var list = selectedDictionary

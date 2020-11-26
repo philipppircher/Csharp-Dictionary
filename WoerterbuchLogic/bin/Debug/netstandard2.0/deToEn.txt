@@ -1,3 +1,5 @@
 Spielen;to play
 Freude; happiness
 Zug;tain
+hallo;hello
+katl;cool
